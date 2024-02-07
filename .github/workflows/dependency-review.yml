@@ -33,7 +33,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: cd AspNetCoreSignalR_React.Client && npm install
+      - run: cd AspNetCoreSignalR_React.Client && npm ci
 
       - name: Component detection 
         uses: advanced-security/component-detection-dependency-submission-action@v0.0.2
