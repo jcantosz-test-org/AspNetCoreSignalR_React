@@ -1,12 +1,12 @@
 {
-  "name": "codingblast",
+  "name": "my-cool-signlr-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@microsoft/signalr": "^8.0.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "react-scripts": "1.0.0"
+    "react-scripts": "1.0.14"
   },
   "scripts": {
     "start": "react-scripts start",
