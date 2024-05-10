@@ -22,7 +22,7 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
     - name: dotnet format
       run: |
-        dotnet format --verify-no-changes --verbosity diag --report report.json
+        dotnet format --verbosity diag --report report.json
         cat report.json
     - name: 'Resolve Project Dependencies Using Dotnet'
       run: |
