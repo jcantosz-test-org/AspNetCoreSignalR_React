@@ -24,6 +24,10 @@ jobs:
       run: |
         dotnet format --verbosity diag --report report.json
         cat report.json
+    - name: dotnet format on csproj directly
+      run: |
+        dotnet format --verbosity diag --report  csproj-report.json AspNetCoreSignalR_React.Server/AspNetCoreSignalR_React.Server.csproj
+        cat csproj-report.json
     - name: 'Resolve Project Dependencies Using Dotnet'
       run: |
         dotnet build --configuration Release --output ./output
