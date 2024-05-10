@@ -20,7 +20,9 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
-
+    - name: dotnet format
+      run: |
+        dotnet format --verify-no-changes --verbosity diag 
     - name: 'Resolve Project Dependencies Using Dotnet'
       run: |
         dotnet build --configuration Release --output ./output
