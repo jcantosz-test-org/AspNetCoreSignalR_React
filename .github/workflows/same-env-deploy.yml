@@ -7,7 +7,15 @@ on:
     branches: [ "master" ]
 
 jobs:
+  dependency:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run a one-line script
+        run: echo Hello from Octo Organization
   build:
+    needs: dependency
     runs-on: ubuntu-latest
     environment: other
     steps:
@@ -16,6 +24,16 @@ jobs:
       - name: Run a one-line script
         run: echo Hello from Octo Organization
   build2:
+    needs: dependency
+    runs-on: ubuntu-latest
+    environment: other
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run a one-line script
+        run: echo Hello from Octo Organization
+
+  build3:
     needs: build
     runs-on: ubuntu-latest
     environment: other
