@@ -89,3 +89,4 @@ jobs:
       with:
         category: "/language:${{matrix.language}}"
         ref: ${{ inputs.branch }}
+        sha: ${{ github.sha }}
