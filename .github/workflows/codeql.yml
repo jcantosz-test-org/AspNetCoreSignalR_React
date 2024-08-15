@@ -10,14 +10,14 @@
 # supported CodeQL languages.
 #
 name: "CodeQL test"
+run-name: Run CodeQL against branch ${{ inputs.branch || github.ref_name}}
 
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
   schedule:
-    - cron: '18 5 * * 3'
+    - cron: '*/5 * * * *'
+    #- cron: '18 5 * * 3'
   workflow_dispatch:
     inputs:
       branch:
@@ -92,5 +92,7 @@ jobs:
       uses: github/codeql-action/analyze@v3
       with:
         category: "/language:${{matrix.language}}"
-        ref: ${{ inputs.branch || github.ref_name }}
+        # This worklfow will ONLY run against branches (not PRs or tags) due to hardcoded refs/heads
+        # If needs to be expanded, make this a variable
+        ref: "refs/heads/${{ inputs.branch || github.ref_name }}"
         sha: ${{ steps.sha.outputs.sha }}
