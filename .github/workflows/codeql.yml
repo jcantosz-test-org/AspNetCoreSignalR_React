@@ -18,6 +18,11 @@ on:
     branches: [ "master" ]
   schedule:
     - cron: '18 5 * * 3'
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: branch
+        required: false
 
 jobs:
   analyze:
@@ -48,6 +53,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        ref: ${{ inputs.branch }}
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
@@ -81,3 +88,4 @@ jobs:
       uses: github/codeql-action/analyze@v3
       with:
         category: "/language:${{matrix.language}}"
+        ref: ${{ inputs.branch }}
