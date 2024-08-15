@@ -58,7 +58,7 @@ jobs:
     - name: Get SHA
       id: sha
       run: |
-        $sha=git rev-parse HEAD
+        $sha = git rev-parse HEAD
          echo "sha=$sha" >> $env:GITHUB_OUTPUT
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
