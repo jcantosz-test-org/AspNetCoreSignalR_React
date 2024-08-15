@@ -88,5 +88,5 @@ jobs:
       uses: github/codeql-action/analyze@v3
       with:
         category: "/language:${{matrix.language}}"
-        ref: ${{ inputs.branch }}
+        ref: ${{ inputs.branch || github.ref_name }}
         sha: ${{ github.sha }}
