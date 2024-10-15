@@ -37,7 +37,7 @@ jobs:
 
     - name: 'Package Project Dotnet'
       run: |
-        dotnet pack --no-build --configuration Release --output ./pack
+        dotnet pack --configuration Release --output ./pack
 
     - name: upload build
       uses: actions/upload-artifact@v4
