@@ -20,10 +20,15 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
+    # Walkthrough notes:
+    # 1. run as default - show that it works (trigger, runs-on, job/step)
+    # 2. a. add  --configuration Release to build script - show that you can change parameters and get build artifacts
+    #    b. add upload artifact
+    # 3. Add dotnet format abd print out report - show that you can run tests/other scripts
+    # 4. a. add dotnet pack & push - Show that you can publish
+    #    b. add permissions section
     
     # add ---
-    - name: ls
-      run: ls -la AspNetCoreSignalR_React.Server
     - name: dotnet format
       run: |
         dotnet format --verbosity diag --report report.json
@@ -33,16 +38,17 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build  --configuration Release --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
     
     # add ---
-    - name: ls
-      run: |
-        ls -la AspNetCoreSignalR_React.Server
-        ls -la AspNetCoreSignalR_React.Server/bin
     - name: 'Package Project Dotnet'
       run: |
         dotnet pack --configuration Release --output ./pack
     # --------
+    - name: upload build
+      uses: actions/upload-artifact@v4
+      with:
+        name: build
+        path: AspNetCoreSignalR_React.Server/bin
