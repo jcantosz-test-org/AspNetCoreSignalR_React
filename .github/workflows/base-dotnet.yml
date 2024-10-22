@@ -27,7 +27,7 @@ jobs:
         dotnet format --verbosity diag --report report.json
         cat report.json
     - name: ls
-      run: ls -la
+      run: ls -la AspNetCoreSignalR_React.Server
     # --------
     
     - name: Restore dependencies
@@ -39,7 +39,7 @@ jobs:
     
     # add ---
     - name: ls
-      run: ls -la
+      run: ls -la AspNetCoreSignalR_React.Server
     - name: 'Package Project Dotnet'
       run: |
         dotnet pack --configuration Release --output ./pack
