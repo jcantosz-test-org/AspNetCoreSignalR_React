@@ -48,7 +48,7 @@ jobs:
         echo "Authenticate Nuget"
         dotnet nuget add source --username "jcantosz-test-org" --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/jcantosz-test-org/index.json"
         echo "Push package"
-        dotnet nuget push "pack/AspNetCoreSignalR_React.Server.1.0.0.nupkg" --source "github"
+        dotnet nuget push "pack/AspNetCoreSignalR_React.Server.1.0.0.nupkg" --source "github" --skip-duplicate
 
     - name: upload build
       uses: actions/upload-artifact@v4

@@ -20,9 +20,27 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
+    
+    # add ---
+    - name: dotnet format
+      run: |
+        dotnet format --verbosity diag --report report.json
+        cat report.json
+    - name: ls
+      run: ls -la
+    # --------
+    
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    
+    # add ---
+    - name: ls
+      run: ls -la
+    - name: 'Package Project Dotnet'
+      run: |
+        dotnet pack --configuration Release --output ./pack
+    # --------
