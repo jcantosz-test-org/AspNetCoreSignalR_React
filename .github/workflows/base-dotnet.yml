@@ -22,12 +22,12 @@ jobs:
         dotnet-version: 8.0.x
     
     # add ---
+    - name: ls
+      run: ls -la AspNetCoreSignalR_React.Server
     - name: dotnet format
       run: |
         dotnet format --verbosity diag --report report.json
         cat report.json
-    - name: ls
-      run: ls -la AspNetCoreSignalR_React.Server
     # --------
     
     - name: Restore dependencies
@@ -39,7 +39,9 @@ jobs:
     
     # add ---
     - name: ls
-      run: ls -la AspNetCoreSignalR_React.Server
+      run: |
+        ls -la AspNetCoreSignalR_React.Server
+        ls -la AspNetCoreSignalR_React.Server/bin
     - name: 'Package Project Dotnet'
       run: |
         dotnet pack --configuration Release --output ./pack
