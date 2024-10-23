@@ -29,5 +29,11 @@ jobs:
     - name: Get versions
       run: |
         mvn -v
+        which mvn
         #java -v
+    - name: get maven version
+      run: |
+        ver="2.0.9"
+        curl -o mvn.tgz https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/$ver/apache-maven-$ver-bin.tar.gz
+        tar xvzf mvn.tgz
         
