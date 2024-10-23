@@ -27,5 +27,6 @@ jobs:
 
     - name: Get versions
       run: |
-        java --version
-        mvn --version
+        mvn -v
+        java -v
+        
