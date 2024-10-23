@@ -36,9 +36,4 @@ jobs:
         ver="2.0.9"
         curl -o mvn.tgz https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/$ver/apache-maven-$ver-bin.tar.gz
         tar xvzf mvn.tgz
-        sudo mv apache-maven-$ver/bin/* /usr/bin/
-
-    - name: get maven version
-      run: |
-        mvn -v
-        
+        bash apache-maven-$ver/bin/mvn -v        
