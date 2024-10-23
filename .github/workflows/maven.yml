@@ -21,12 +21,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 8
-      uses: actions/setup-java@v1
+      uses: actions/setup-java@v3
       with:
         java-version: 8
 
     - name: Get versions
       run: |
         mvn -v
-        java -v
+        #java -v
         
